@@ -10,9 +10,9 @@ module.exports = {
 
     async create(req, res) {
 
-        const { name_product, category, value } = req.body
+        const { name_product, category, value, description, image } = req.body
 
-        if (!name_product || !category || !value) {
+        if (!name_product || !category || !value || !description || !image) {
             return res.status(400).send
         }
 
@@ -20,7 +20,9 @@ module.exports = {
         await connection('products').insert({
             name_product, 
             category, 
-            value
+            value,
+            description,
+            image
 
         })
         return res.json({success: 'Produto cadastrado com sucesso!'})
@@ -38,14 +40,17 @@ module.exports = {
     
     async update(req,res){
         const {id} =req.params
-        const {name_product,category,value} = req.body
+        const {name_product , category, value, description, image} = req.body
         
         await connection('products')
             .where({id_product: id})
             .update({
                 name_product,
                 category,
-                value
+                value,
+                description,
+                image
+
             })
             res.json({suceces: 'Produto editado com sucesso!'})
 
@@ -61,8 +66,4 @@ module.exports = {
         return productDelete ? res.json({succes:'Item deletado com sucesso!'}): res.json({error:'Item não encontrado =('})
     
     }
-
-
-
-
 }
