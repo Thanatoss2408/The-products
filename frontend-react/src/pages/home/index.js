@@ -65,7 +65,7 @@ export default function Home() {
                 <img src={product.image} alt="image{product.name}" />
                 <h2> {product.name_product}</h2>
                 <span> {formatPrice(product.value)}</span>
-                <Link to="" onClick={() => handleDetail(product.id_product)} className="back-link">
+                <Link to="/home" onClick={() => handleDetail(product.id_product)} className="back-link">
                   Detalhes
                 <FiArrowRight size={20} color="000" />
                 </Link>

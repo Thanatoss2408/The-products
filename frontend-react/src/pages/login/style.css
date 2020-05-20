@@ -1,0 +1,16 @@
+.login-container {
+    width: 80%;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-color {
+    background: #6C63FF !important;
+}
+
+.login-container form input {
+    margin-bottom: 15px;
+}

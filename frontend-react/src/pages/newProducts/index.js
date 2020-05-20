@@ -38,7 +38,7 @@ function NewProducts() {
     try {
       
       id_product !== null ? api.put(`product/${id_product}`, data) : api.post('products', data)
-      history.push('/')
+      history.push('/home')
 
 
     } catch (error) {
@@ -57,7 +57,7 @@ function NewProducts() {
         <h1> {title}</h1>
         <span>Insira os dados corretamente para cadastrar o novo produto.      </span>
 
-        <Link to="/" className="back-link">
+        <Link to="/home" className="back-link">
           <FiArrowLeft size={18} color="000" />
           Voltar para a Home
         </Link>
