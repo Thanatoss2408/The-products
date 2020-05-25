@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import { FiArrowRight, FiX } from "react-icons/fi";
+import { Link, useHistory } from 'react-router-dom'
+import { FiArrowRight, FiX, FiPower } from "react-icons/fi";
 
 import './style.css';
 import api from '../../service/api'
 
 export default function Home() {
 
+
   const [produts, setProduct] = useState([])
   const [produtDetail, setProductDetail] = useState([])
-  useEffect(() => {
-    api.get('products')
-      .then(res => {
-        setProduct(res.data)
+  const nameUser = localStorage.getItem('name')
+  const id = localStorage.getItem('id')
 
-      })
-  }, [1])
+  useEffect(() => {
+    api.get('products').then(res => {
+      setProduct(res.data)
+    })
+  }, [ id])
 
   async function handleDetail(id) {
     await api.get(`product/${id}`)
@@ -36,7 +38,7 @@ export default function Home() {
 
   }
 
- async  function handleDelete(id) {
+  async function handleDelete(id) {
 
     try {
       await api.delete(`product/${id}`)
@@ -48,12 +50,22 @@ export default function Home() {
 
   }
 
+  const history = useHistory()
+  function handleLogout() {
+    localStorage.clear()
+    history.push('/')
+
+  }
+
   return (
     <section className="home-container">
       <header>
-        <h1> Bem vindo a loja dos Sonhos</h1>
+        <h1> Bem vindo , {nameUser} </h1>
 
         <Link to="/newProducts" className="btn"> Cadastrar Novo Produto</Link>
+        <button type="button" onClick={handleLogout}>
+          <FiPower size={18} color="#1F53E4" />
+        </button>
       </header>
       <div>
         <ul>

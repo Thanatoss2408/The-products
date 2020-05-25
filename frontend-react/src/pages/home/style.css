@@ -7,7 +7,7 @@
 .home-container header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    
 }
 
 .home-container h1 {
@@ -16,7 +16,20 @@
 }
 
 .home-container header a {
+    margin-left: auto;
     width: 300px;
+}
+.home-container header button{
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    border: 1px solid #dcdce6;
+    background: transparent ;
+    margin-left: 15px;
+    transition: border-color 0.2s;
+}
+.home-container head button:hover{
+    border-color: #999;
 }
 
 .home-container div {
